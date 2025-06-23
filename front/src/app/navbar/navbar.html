@@ -1,0 +1,40 @@
+<nav class="bg-black text-white shadow-md w-full">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <div class="flex items-center space-x-8">
+        <a routerLink="/home" class="text-2xl font-semibold tracking-wide">MyBrand</a>
+        <div class="hidden md:flex space-x-6 text-sm font-medium">
+          <a routerLink="/home" class="hover:text-gray-300 transition">Home</a>
+          <a routerLink="/shop" class="hover:text-gray-300 transition">Shop</a>
+        </div>
+      </div>
+
+      <div class="flex-1 mx-6 hidden md:block">
+        <div class="relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full bg-white text-black rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          />
+          <div class="absolute right-3 top-2.5 text-gray-500">🔍</div>
+        </div>
+      </div>
+
+      <div class="flex justify-center items-center space-x-4 text-sm font-medium">
+        <ng-container *ngIf="!isLoggedIn; else logged">
+          <a routerLink="/register" class="px-4 py-1.5 rounded-full border border-white hover:bg-white hover:text-black transition">Register</a>
+          <a routerLink="/login" class="px-4 py-1.5 rounded-full bg-blue-600 hover:bg-blue-500 transition">Login</a>
+        </ng-container>
+
+        <ng-template #logged>
+          <a routerLink="/profile" class="hover:text-gray-300 transition">Profil</a>
+          <a routerLink="/cart" (click)="emitOpenCart()" class="hover:text-gray-300 transition">Panier</a>
+          <button (click)="logout()" class="px-4 py-1.5 rounded-full border border-white hover:bg-white hover:text-black transition">
+            Déconnexion
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>
